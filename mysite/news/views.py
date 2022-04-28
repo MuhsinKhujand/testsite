@@ -5,7 +5,7 @@ from .models import *
 
 # Create your views here.
 def index(request):
-    news = News.objects.order_by('-created_at')
+    news = News.objects.all()
     context={
         'news': news,
         'title': 'news list',
@@ -15,5 +15,4 @@ def index(request):
 
 
 
-def test(request):
-    return HttpResponse("<h1>daddr</h1>")
+
