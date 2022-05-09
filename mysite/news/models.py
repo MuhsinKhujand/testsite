@@ -7,12 +7,9 @@ class News(models.Model):
     content = models.TextField(blank=True, verbose_name='kontent')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='sozdan')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='obnavlyon')
-    url_height = models.PositiveIntegerField()
-    url_width = models.PositiveIntegerField()
-    photo = models.ImageField(upload_to='photos/%Y/%m/', width_field='url_width', height_field='url_height',
-                              verbose_name="foto", blank=True)
+    photo = models.ImageField(upload_to='photos/%Y/%m/', verbose_name="foto", blank=True)
     is_published = models.BooleanField(default=True, verbose_name='opublikovan')
-    email = models.EmailField(null=True, verbose_name='e-pochta')
+    email = models.EmailField(blank=True, verbose_name='e-pochta')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name="kategoriya",)
 
     def __str__(self):
